@@ -3,6 +3,7 @@ import {
   Container,
   Inner,
   Pane,
+  Item,
   Title,
   SubTitle,
   Image,
@@ -14,9 +15,9 @@ export default function Jumbotron({
   ...restprops
 }) {
   return (
-    <>
-      <Inner direction={direction}>{children}</Inner>
-    </>
+    <Item direction={direction}>
+      <Inner>{children}</Inner>
+    </Item>
   );
 }
 
