@@ -17,7 +17,7 @@ export const Inner = styled.div`
   margin: auto;
   width: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     flex-direction: column;
   }
 `;
@@ -52,6 +52,15 @@ export const SubTitle = styled.h2`
   }
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+`;
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  @media screen and (max-width: 1000px) {
+    ${Item}:last-of-type h2 {
+      margin-bottom: 50px;
+    }
+  }
+`;
