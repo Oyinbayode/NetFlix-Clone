@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { HeaderContainer } from "../containers/header";
 import { FooterContainer } from "../containers/footer";
 import { SigninForm } from "../components";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { FirebaseContext } from "../context/firebase";
+
 import * as ROUTES from "../constants/routes";
 
 export default function Signin() {
+  const { firebase } = useContext(FirebaseContext);
+
+  // USENAVIGATE
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,6 +23,17 @@ export default function Signin() {
     e.preventDefault();
 
     // firebase post functionality
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        navigate(ROUTES.BROWSE);
+      })
+      .catch((err) => {
+        setEmail("");
+        setPassword("");
+        setError(err.message);
+      });
   };
 
   return (
@@ -24,7 +43,6 @@ export default function Signin() {
           <SigninForm.Title>Sign In</SigninForm.Title>
           {error && <SigninForm.Error>{error}</SigninForm.Error>}
           <SigninForm.Base onSubmit={handleSignin} method="POST">
-            {console.log(isInvalid)}
             <SigninForm.Input
               placeholder="Email Address"
               value={email}
@@ -47,11 +65,11 @@ export default function Signin() {
           <SigninForm.Text>
             New to Netflix?{" "}
             <SigninForm.Link to={ROUTES.SIGN_UP}>Sign up now.</SigninForm.Link>
-            <SigninForm.TextSmall>
-              This page is protected by Google reCAPTCHA to ensure you are not a
-              bot.
-            </SigninForm.TextSmall>
           </SigninForm.Text>
+          <SigninForm.TextSmall>
+            This page is protected by Google reCAPTCHA to ensure you are not a
+            bot.
+          </SigninForm.TextSmall>
         </SigninForm>
       </HeaderContainer>
       <FooterContainer />

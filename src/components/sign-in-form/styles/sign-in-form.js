@@ -60,6 +60,33 @@ export const Link = styled(ReactRouterLink)`
   }
 `;
 
-export const Input = styled.input``;
+export const Input = styled.input`
+  border: #333;
+  border-radius: 4px;
+  border: 0;
+  color: black;
+  height: 50px;
+  line-height: 50px;
+  padding: 5px 20px;
+  margin-bottom: 20px;
 
-export const Submit = styled.button``;
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+`;
+
+export const Submit = styled.button`
+  background: #e50914;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 24px 0 12px;
+  padding: 16px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+`;
