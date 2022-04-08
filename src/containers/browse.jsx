@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import { SelectProfileContainer } from "./profiles";
 import { FirebaseContext } from "../context/firebase";
 import { Header, Loading } from "../components";
@@ -8,6 +9,9 @@ import logo from "../logo.svg";
 export function BrowseContainer({ slides }) {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
+
+  // Search State
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
@@ -29,6 +33,10 @@ export function BrowseContainer({ slides }) {
             <Header.TextLink>Films</Header.TextLink>
           </Header.Group>
           <Header.Group>
+            <Header.Search
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
             <Header.Profile>
               <Header.Picture src={user.photoURL} />
               <Header.Dropdown>
@@ -54,6 +62,7 @@ export function BrowseContainer({ slides }) {
             he projects in a futile attempt to feel like he's part of the world
             around him.
           </Header.Text>
+          <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
     </>
