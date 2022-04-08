@@ -6,7 +6,7 @@ import logo from "../logo.svg";
 export function SelectProfileContainer({ user, setProfile }) {
   return (
     <>
-      <Header bg={false}>
+      <Header bg={false} dontShowOnSmallViewPort>
         <Header.Frame>
           <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
         </Header.Frame>
