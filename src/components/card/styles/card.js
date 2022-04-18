@@ -65,7 +65,7 @@ export const Meta = styled.div`
   position: absolute;
   bottom: 0;
   padding: 10px;
-  background: #00000008f;
+  background: #0000008f;
 `;
 
 export const Item = styled.div`
@@ -126,13 +126,12 @@ export const FeatureText = styled.p`
 export const Feature = styled.div`
   display: flex;
   flex-direction: row;
-  background: url() (${({ src }) => src});
+  background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
   height: 360px;
   background-position-x: right;
   background-repeat: no-repeat;
-  background-color: black;
 
   @media (max-width: 1000px) {
     height: auto;
