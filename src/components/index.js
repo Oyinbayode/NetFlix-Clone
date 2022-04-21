@@ -7,3 +7,5 @@ export { default as Feature } from "./feature";
 export { default as SigninForm } from "./sign-in-form";
 export { default as Profiles } from "./profiles";
 export { default as Loading } from "./loading";
+export { default as Card } from "./card";
+export { default as Player } from "./player";
