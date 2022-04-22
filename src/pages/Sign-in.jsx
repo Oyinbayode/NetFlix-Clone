@@ -41,9 +41,7 @@ export default function Signin() {
       <HeaderContainer>
         <SigninForm>
           <SigninForm.Title>Sign In</SigninForm.Title>
-          {error && (
-            <SigninForm.Error data-testid="error">{error}</SigninForm.Error>
-          )}
+          {error && <SigninForm.Error>{error}</SigninForm.Error>}
           <SigninForm.Base onSubmit={handleSignin} method="POST">
             <SigninForm.Input
               placeholder="Email Address"
@@ -59,11 +57,7 @@ export default function Signin() {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <SigninForm.Submit
-              data-testid="sign-in"
-              disabled={!isInvalid}
-              type="submit"
-            >
+            <SigninForm.Submit disabled={!isInvalid} type="submit">
               Sign In
             </SigninForm.Submit>
           </SigninForm.Base>
